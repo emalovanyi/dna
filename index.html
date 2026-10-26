@@ -542,6 +542,65 @@ body { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .ac-welcome{ padding:20px; border-radius:var(--r-lg); background:var(--orange-wash); border:1px solid #ffd3c2 }
 @media (min-width:1024px){ .ac-welcome{ padding:28px } }
 .ac-num{ flex:none; width:28px; height:28px; border-radius:50%; background:var(--ink); color:#fff; font-weight:800; font-size:13px; display:grid; place-items:center }
+
+/* ---------- DNA header on the results page ---------- */
+.ac-dna{ padding:24px }
+@media (min-width:1024px){ .ac-dna{ padding:40px 44px } }
+.ac-dna::before{ right:auto; left:55%; top:-120px; width:620px; height:620px; background:radial-gradient(closest-side, rgba(255,65,0,.35), rgba(255,65,0,0)) }
+.ac-dna-grid{ display:grid; gap:28px; align-items:center }
+@media (min-width:1024px){ .ac-dna-grid{ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:40px } }
+.ac-dna-title{ margin-top:14px; font-size:40px; line-height:.98; font-weight:900; letter-spacing:-.045em }
+@media (min-width:650px){ .ac-dna-title{ font-size:56px } }
+@media (min-width:1280px){ .ac-dna-title{ font-size:68px } }
+.ac-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:28px }
+.ac-stat{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; padding:6px 14px 6px 0; text-align:left; cursor:pointer; border-radius:14px; transition:background .2s, padding .25s var(--ease) }
+.ac-stat + .ac-stat{ padding-left:14px; border-left:1px solid rgba(255,255,255,.14) }
+.ac-stat:hover{ background:rgba(255,255,255,.06); padding-left:14px }
+.ac-stat .nm{ display:flex; align-items:center; gap:7px; font-weight:700; font-size:14px; color:var(--c) }
+.ac-stat .nm i{ width:9px; height:9px; border-radius:50%; background:var(--c) }
+.ac-stat b{ font-size:34px; line-height:1.05; font-weight:900; letter-spacing:-.03em }
+@media (min-width:1024px){ .ac-stat b{ font-size:42px } }
+.ac-stat .pc{ font-size:13px; color:rgba(255,255,255,.55) }
+.ac-pill{ display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 8px 0 16px; border-radius:999px; background:#fff; color:#000; font-weight:700; font-size:14px; cursor:pointer; transition:transform .25s var(--spring) }
+.ac-pill:hover{ transform:translateY(-1px) }
+.ac-pill svg{ width:17px; height:17px }
+.ac-pill .tag{ padding:4px 8px; border-radius:8px; background:var(--mist); font-size:11px; font-weight:800; color:var(--muted) }
+
+.ac-donut{ position:relative; width:min(100%, 300px); aspect-ratio:1; margin:0 auto }
+@media (min-width:1024px){ .ac-donut{ width:min(100%, 380px) } }
+.ac-donut .glow{ position:absolute; inset:8%; border-radius:50%; background:radial-gradient(closest-side, rgba(255,120,80,.28), rgba(255,65,0,0)); filter:blur(6px) }
+.ac-donut svg{ position:relative; width:100%; height:100%; overflow:visible }
+.ac-donut .seg{ stroke-width:22; stroke-linecap:round; cursor:pointer; outline:none;
+  transition:stroke-width .3s var(--spring), opacity .25s, filter .25s }
+.ac-donut.draw .seg{ animation:draw 1.3s var(--ease) both }
+.ac-donut.draw .seg:nth-child(2){ animation-delay:.15s } .ac-donut.draw .seg:nth-child(3){ animation-delay:.3s }
+@keyframes draw{ from{ stroke-dasharray:0 600 } }
+.ac-donut svg:hover .seg{ opacity:.4 }
+.ac-donut svg .seg:hover, .ac-donut .seg:focus-visible{ opacity:1; stroke-width:30; filter:drop-shadow(0 6px 14px rgba(0,0,0,.35)) }
+.ac-donut .ctr{ position:absolute; inset:0; display:grid; place-content:center; text-align:center; pointer-events:none }
+.ac-donut .ctr b{ font-size:64px; line-height:1; font-weight:900; letter-spacing:-.05em; transition:color .2s }
+@media (min-width:1024px){ .ac-donut .ctr b{ font-size:80px } }
+.ac-donut .ctr span{ margin-top:4px; font-size:15px; color:rgba(255,255,255,.6) }
+
+/* band modal */
+.ac-bandcol{ padding:8px 4px 2px; border-radius:12px; cursor:pointer; transition:background .2s }
+.ac-bandcol:hover{ background:var(--mist) }
+.ac-bandcol b{ display:block; font-size:18px; font-weight:800; color:#b4b1ad }
+.ac-bandcol span{ display:block; font-size:12px; color:#b4b1ad }
+.ac-bandcol[aria-pressed="true"] b{ color:#000 } .ac-bandcol[aria-pressed="true"] span{ color:#575757 }
+@media (min-width:650px){ .ac-bandcol b{ font-size:22px } .ac-bandcol span{ font-size:14px } }
+.ac-toprow{ position:relative; display:flex; align-items:center; gap:14px; width:100%; padding:16px 18px; border-radius:18px; background:#fff; text-align:left; cursor:pointer;
+  box-shadow:inset 4px 0 0 var(--c); transition:transform .25s var(--spring), box-shadow .2s }
+.ac-toprow:hover{ transform:translateX(3px) }
+.ac-toprow .rank{ position:absolute; top:12px; right:14px; font-size:13px; font-weight:800; color:#b4b1ad }
+.ac-pct{ flex:none; width:58px; height:58px; border-radius:14px; background:var(--s); color:var(--c); display:grid; place-content:center; text-align:center; line-height:1 }
+.ac-pct b{ font-size:22px; font-weight:900 }
+.ac-pct small{ font-size:10px; color:#6c6c6c; margin-top:3px }
+.ac-li .ac-pct{ width:48px; height:48px } .ac-li .ac-pct b{ font-size:18px }
+
+/* quick buy: gift code */
+.ac-code{ border:1.5px dashed #cfcdc9; border-radius:16px; padding:14px }
+.ac-code.ok{ border-style:solid; border-color:#bfe5cb; background:#effaf2 }
 </style>
 </head>
 
@@ -1454,16 +1513,7 @@ body { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M7 5c5 3 5 5 10 8M17 5c-5 3-5 5-10 8"/></svg>
         <span>Vyhodnotíme ho z vašej uloženej vzorky <b id="icKit"></b>. Odber sa neopakuje a nič neposielame poštou — výsledky pribudnú v účte do pár minút.</span>
       </div>
-      <div class="mt-4 grid gap-2.5">
-        <div class="flex items-center justify-between gap-3 rounded-2xl border border-[#e7e5e4] p-4">
-          <div><p class="text-grey-300 text-xs font-semibold">Platba</p><p class="mt-0.5 text-sm font-semibold">Uložená karta VISA •••• 4242</p></div>
-          <button class="ac-link text-sm">Zmeniť</button>
-        </div>
-        <div class="flex items-baseline justify-between gap-3 px-1 pt-2">
-          <span class="font-semibold">Spolu s DPH</span>
-          <b id="icTotal" class="text-3xl font-black tnum"></b>
-        </div>
-      </div>
+      <div id="icDyn" class="mt-4"></div>
     </div>
     <div class="shrink-0 px-5 pt-3 pb-5 md:px-7 md:pb-7">
       <button id="icPay" class="ac-btn ac-btn-dark ac-btn-block" style="height:56px;font-size:16px">
@@ -1492,6 +1542,29 @@ body { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
       </button>
     </div>
     <div id="resBody" class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pt-3 pb-6 md:px-7"></div>
+  </div>
+</div>
+
+<!-- ===========================================================================
+     BAND MODAL — one percentile band from the DNA header donut
+     =========================================================================== -->
+<div id="bandModal" class="gb-overlay ac ac-modal" style="--modal-w:640px; --sheet-max:94dvh" role="dialog" aria-modal="true" aria-label="Výsledky v pásme">
+  <div class="gb-scrim" data-close></div>
+  <div class="gb-panel" style="background:#f6f5f3">
+    <div class="gb-handle justify-center pt-3 pb-2" data-swipe><div class="h-1 w-12 rounded-full bg-gray-300"></div></div>
+    <div class="flex shrink-0 items-center gap-2 px-5 pt-2 pb-1 md:px-7 md:pt-7" data-swipe>
+      <div id="bandHead" class="flex min-w-0 flex-1 items-center"></div>
+      <button data-close class="shrink-0 cursor-pointer rounded-full p-1.5 text-black hover:bg-black/5" aria-label="Zavrieť">
+        <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pt-3 pb-6 md:px-7">
+      <p id="bandDesc" class="text-[15px] leading-relaxed text-[#575757]"></p>
+      <div id="bandChart" class="mt-4 rounded-[20px] bg-white p-4 md:p-5"></div>
+      <h4 id="bandTopTitle" class="mt-6 text-[15px] font-black"></h4>
+      <div id="bandTop" class="mt-3 grid gap-2.5"></div>
+      <button id="bandAll" class="ac-btn ac-btn-dark ac-btn-block mt-5" data-band-list=""></button>
+    </div>
   </div>
 </div>
 
@@ -2759,6 +2832,26 @@ const PREV_FALLBACK = {
 const prevGroup = pkg => ({ sport:'sport', essentials:'sport', nutrition:'nutrition', beauty:'beauty', mind:'mind' }[pkg] || 'health')
 const variantCount = name => 40 + [...name].reduce((a, ch) => a + ch.charCodeAt(0), 0) % 380
 
+/* ---------------------------------------------------------------------------
+   Three percentile bands for the results header and the band modal.
+   Levels 1 and 2 (štandardné, mierne zvýšené) both fall into the common band.
+   --------------------------------------------------------------------------- */
+const BANDS = [
+  { key:'high', name:'Vysoké',  c:'#c0392b', soft:'#f6e3e1', range:'75.–100. percentil', lv:[3],
+    desc:'Nad bežným pásmom: vyšší sklon, hladina alebo citlivosť ako u väčšiny ľudí (75. percentil a viac).', top:'Top 3 najvyššie' },
+  { key:'mid',  name:'Stredné', c:'#ec8f45', soft:'#fbeee2', range:'25.–75. percentil', lv:[1,2],
+    desc:'V bežnom pásme ako väčšina populácie (25.–75. percentil). Najväčší vplyv tu má životný štýl.', top:'Top 3 v pásme' },
+  { key:'low',  name:'Nízke',   c:'#a19d98', soft:'#efedeb', range:'0.–25. percentil', lv:[0],
+    desc:'Pod bežným pásmom: nižší sklon, hladina alebo citlivosť ako u väčšiny ľudí (do 25. percentilu).', top:'Top 3 najnižšie' },
+]
+const bandOf = lvl => BANDS.find(b => b.lv.includes(lvl))
+const bandByKey = key => BANDS.find(b => b.key === key)
+// deterministic placeholder percentile inside the result's band
+const pctOf = r => {
+  const h = [...r.name].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 997, 7)
+  return r.lvl === 3 ? 82 + h % 17 : r.lvl === 2 ? 62 + h % 13 : r.lvl === 1 ? 30 + h % 30 : 3 + h % 21
+}
+
 /* ---------- shared pieces ---------- */
 function helix(){
   let rungs = ''
@@ -3151,7 +3244,6 @@ function screenResults(){
   const rows = allRows(k)
   const seen = new Set()
   const top = rows.filter(r => r.lvl >= 2 && !seen.has(r.name) && seen.add(r.name)).sort((a, b) => b.lvl - a.lvl).slice(0, 6)
-  const C = 314.16
 
   const head = `
     ${acc.demo ? `<div class="ac-demo">
@@ -3163,26 +3255,29 @@ function screenResults(){
           ? `<button data-person="${i}" aria-pressed="${acc.person === i}">${x.first}</button>` : '').join('')}</div>`
         : `<span class="ac-kitchip"><span class="ac-avatar" style="width:28px;height:28px;font-size:11px">${initials(k)}</span>${k.id}</span>`)}`
 
+  const bc = bandCounts(k)
+  const total = bc.high + bc.mid + bc.low
   const hero = `
-    <section class="ac-hero">
-      ${helix()}
-      <div class="flex flex-col-reverse gap-6 sm:flex-row sm:items-start sm:justify-between">
+    <section class="ac-hero ac-dna">
+      <div class="ac-dna-grid">
         <div class="min-w-0">
-          <span class="ac-chip glass">${acc.demo ? 'Ukážkové dáta' : `Vyhodnotené ${k.evaluated}`}</span>
-          <h1 class="ac-title mt-4">${acc.demo ? 'Ukážka výsledkov' : fullName(k)}</h1>
-          <p class="muted mt-1 text-sm">Kit ${k.id}</p>
+          <p class="muted text-sm tnum">${acc.demo ? 'Testovací kit · ukážkové dáta' : `Kit ${k.id}, ${k.evaluated}`}</p>
+          <h1 class="ac-dna-title">${acc.demo ? 'Takto vyzerá<br>vaša DNA.' : `${k.first},<br>toto je vaša DNA.`}</h1>
+          <div class="ac-stats">${BANDS.map(b => `
+            <button class="ac-stat" data-band="${b.key}" style="--c:${b.c}">
+              <span class="nm"><i></i>${b.name}</span>
+              <b class="tnum">${bc[b.key]}</b>
+              <span class="pc tnum">${Math.round(bc[b.key] / total * 100)} %</span>
+            </button>`).join('')}</div>
+          <div class="mt-7 flex flex-wrap items-center gap-2.5">
+            <button class="ac-pill" data-dl="pdf">${ICON.dl} Report <span class="tag">PDF</span></button>
+            <button class="ac-pill" data-dl="raw">${ICON.dl} Surové dáta <span class="tag">TXT</span></button>
+            <label class="sr-only" for="acLang">Jazyk výsledkov</label>
+            <select id="acLang" class="ac-lang"><option>Slovensky</option><option>English</option><option>Čeština</option></select>
+          </div>
+          ${n < TOTAL_PARAMS ? `<p class="muted mt-4 text-xs tnum">Odomknutých ${n} z ${TOTAL_PARAMS} výsledkov</p>` : ''}
         </div>
-        <div class="ac-ring self-start" role="img" aria-label="${n} z ${TOTAL_PARAMS} výsledkov odomknutých">
-          <svg viewBox="0 0 116 116"><circle class="track" cx="58" cy="58" r="50" fill="none" stroke-width="10"/>
-            <circle class="val" id="acRing" cx="58" cy="58" r="50" fill="none" stroke-width="10" stroke-dasharray="${C}" stroke-dashoffset="${acc.celebrate ? C : C * (1 - n / TOTAL_PARAMS)}" data-target="${C * (1 - n / TOTAL_PARAMS)}"/></svg>
-          <span class="lbl"><span><b class="tnum">${n}</b><br><span>z ${TOTAL_PARAMS} výsledkov</span></span></span>
-        </div>
-      </div>
-      <div class="mt-7 flex flex-wrap items-center gap-2.5">
-        <button class="ac-btn ac-btn-primary ac-btn-sm" data-dl="pdf">${ICON.file} PDF report</button>
-        <button class="ac-btn ac-btn-glass ac-btn-sm" data-dl="raw">${ICON.code} Surové dáta (.txt)</button>
-        <label class="sr-only" for="acLang">Jazyk výsledkov</label>
-        <select id="acLang" class="ac-lang"><option>Slovensky</option><option>English</option><option>Čeština</option></select>
+        ${donut(bc, total)}
       </div>
     </section>`
 
@@ -3214,18 +3309,11 @@ function screenResults(){
 
   const tabs = `<div class="ac-tabs" role="tablist">
       <button role="tab" aria-selected="${acc.tab === 'overview'}" data-acc-tab="overview">Prehľad</button>
-      <button role="tab" aria-selected="${acc.tab === 'levels'}" data-acc-tab="levels">Podľa úrovne</button>
+      <button role="tab" aria-selected="${acc.tab === 'levels'}" data-acc-tab="levels">Podľa pásma</button>
       <button role="tab" aria-selected="${acc.tab === 'all'}" data-acc-tab="all">Podľa oblastí</button>
     </div>`
 
   const overview = `
-    <section class="ac-panel">
-      <div class="flex flex-wrap items-end justify-between gap-2">
-        <div><h2 class="ac-h2">Prehľad vašich výsledkov</h2><p class="ac-sub">Koľko výsledkov spadá do ktorej úrovne. Kliknutím na farbu zobrazíte zoznam.</p></div>
-      </div>
-      <div class="mt-5">${spectrum(k)}</div>
-    </section>
-
     <section>
       <h2 class="ac-h2">Na čo sa pozrieť najskôr</h2>
       <p class="ac-sub">Výsledky s vyšším skóre. Nie sú to diagnózy — ku každému nájdete, čo s tým viete urobiť.</p>
@@ -3265,22 +3353,21 @@ function screenResults(){
         </div>`).join('')}</div>
     </section>`).join('')
 
-  const nLv = levelCounts(k)
   const seenL = new Set()
   const uniq = rows.filter(r => !seenL.has(r.name) && seenL.add(r.name))
   const levels = `<section class="ac-panel">
-      <h2 class="ac-h2">Výsledky podľa úrovne</h2>
-      <p class="ac-sub">Zoradené od najvyššieho genetického skóre. Žiadny výsledok nie je diagnóza.</p>
-      <div class="ac-jump mt-4">${[3,2,1,0].map(i => `<button data-level="${i}" style="--c:${LEVELS[i].c}">${LEVELS[i].name} <b class="tnum">${nLv[i]}</b></button>`).join('')}</div>
-      <div class="mt-6 grid gap-8">${[3,2,1,0].map(i => {
-        const list = uniq.filter(r => r.lvl === i)
-        return `<div id="acLevel-${i}" class="scroll-mt-28">
-          <div class="ac-lvhead" style="--c:${LEVELS[i].c}"><i></i><h3>${LEVELS[i].name} skóre</h3><span class="tnum">${nLv[i]}</span></div>
+      <h2 class="ac-h2">Výsledky podľa pásma</h2>
+      <p class="ac-sub">Percentil ukazuje, ako ste na tom v porovnaní s ostatnými testovanými. Žiadny výsledok nie je diagnóza.</p>
+      <div class="ac-jump mt-4">${BANDS.map(b => `<button data-band-list="${b.key}" style="--c:${b.c}">${b.name} <b class="tnum">${bc[b.key]}</b></button>`).join('')}</div>
+      <div class="mt-6 grid gap-8">${BANDS.map(b => {
+        const list = uniq.filter(r => b.lv.includes(r.lvl)).sort((x, y) => pctOf(y) - pctOf(x))
+        return `<div id="acBand-${b.key}" class="scroll-mt-28">
+          <div class="ac-lvhead" style="--c:${b.c}"><i></i><h3>${b.name}</h3><span class="ac-hint ml-1">${b.range}</span><span class="tnum">${bc[b.key]}</span></div>
           <div class="ac-list">${list.map(r => `<button class="ac-li" data-res="${r.pkg}|${r.cat}|${r.idx}">
-              <span class="min-w-0"><span class="block text-[14px] font-semibold">${r.name}</span><span class="ac-hint">${pkgName(r.pkg)} · ${r.cat}</span></span>
-              <span class="r" style="color:${LEVELS[i].c}">${r.label}</span>
-              <span class="chev [&_svg]:h-4 [&_svg]:w-4">${ICON.chev}</span></button>`).join('')}</div>
-          ${nLv[i] > list.length ? `<p class="ac-hint mt-2.5">Ukážka ${list.length} z ${nLv[i]} výsledkov · celý zoznam v produkcii a v PDF reporte</p>` : ''}
+              <span class="ac-pct" style="--c:${b.c};--s:${b.soft}"><b class="tnum">${pctOf(r)}</b><small>perc.</small></span>
+              <span class="min-w-0"><span class="block text-[14px] font-semibold">${r.name}</span><span class="ac-hint">${r.label} · ${pkgName(r.pkg)}</span></span>
+              <span class="chev ml-auto [&_svg]:h-4 [&_svg]:w-4">${ICON.chev}</span></button>`).join('')}</div>
+          ${bc[b.key] > list.length ? `<p class="ac-hint mt-2.5">Ukážka ${list.length} z ${bc[b.key]} výsledkov · celý zoznam v produkcii a v PDF reporte</p>` : ''}
         </div>`}).join('')}</div>
     </section>`
 
@@ -3288,6 +3375,88 @@ function screenResults(){
     ${head}${hero}${welcome}${fresh}${pending}${tabs}
     ${acc.tab === 'overview' ? overview : acc.tab === 'levels' ? levels : all}
   </div>`
+}
+
+/* ---------- DNA header: counts per band + donut ---------- */
+function bandCounts(k){
+  const n = levelCounts(k)
+  return { high:n[3], mid:n[1] + n[2], low:n[0] }
+}
+function donut(bc, total){
+  const R = 88, C = 2 * Math.PI * R, gap = 14
+  // clockwise from 12 o'clock: high → mid → low, like the reference
+  let start = 0
+  const segs = BANDS.map(b => {
+    const len = Math.max(C * bc[b.key] / total - gap, 2)
+    const seg = `<circle class="seg" data-band="${b.key}" cx="110" cy="110" r="${R}" fill="none" stroke="${b.c}"
+      stroke-dasharray="${len} ${C}" stroke-dashoffset="${-start - gap / 2}" style="--len:${len};--C:${C}" tabindex="0" role="button"
+      aria-label="${b.name}: ${bc[b.key]} výsledkov"><title>${b.name} · ${bc[b.key]}</title></circle>`
+    start += C * bc[b.key] / total
+    return seg
+  }).join('')
+  return `<div class="ac-donut ${acc.celebrate ? 'draw' : ''}" data-total="${total}">
+    <span class="glow"></span>
+    <svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="${R}" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="26"/>
+      <g transform="rotate(-90 110 110)">${segs}</g></svg>
+    <span class="ctr"><b class="tnum" id="acDonutN">${total}</b><span id="acDonutL">výsledkov</span></span>
+  </div>`
+}
+
+/* ---------- band modal ---------- */
+function openBand(key){
+  acc.band = key
+  renderBand()
+  openOverlay($('bandModal'))
+}
+function renderBand(){
+  const k = curKit(), bc = bandCounts(k), b = bandByKey(acc.band)
+  const seen = new Set()
+  const rows = allRows(k).filter(r => !seen.has(r.name) && seen.add(r.name))
+  const inBand = rows.filter(r => b.lv.includes(r.lvl)).sort((x, y) => b.key === 'low' ? pctOf(x) - pctOf(y) : pctOf(y) - pctOf(x))
+  $('bandHead').innerHTML = `<span class="flex items-center gap-3"><i class="h-3.5 w-3.5 rounded-[4px]" style="background:${b.c}"></i><span class="text-2xl font-black">${b.name}</span></span>
+    <b class="ml-auto mr-2 text-2xl font-black tnum text-[#575757]">${bc[b.key]}</b>`
+
+  // distribution: smooth curve across the three bands, the chosen one highlighted
+  const W = 600, H = 220, base = 190, max = Math.max(bc.low, bc.mid, bc.high, 1)
+  const hgt = v => base - 30 - 120 * v / max
+  const P = [[0, base], [100, hgt(bc.low)], [200, (hgt(bc.low) + hgt(bc.mid)) / 2 + 40], [300, hgt(bc.mid)],
+             [400, (hgt(bc.mid) + hgt(bc.high)) / 2 + 40], [500, hgt(bc.high)], [600, base]]
+  let d = `M${P[0][0]},${P[0][1]}`
+  for (let i = 0; i < P.length - 1; i++){
+    const p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2
+    d += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`
+  }
+  const order = ['low','mid','high']
+  const ticks = rows.map(r => {
+    const bb = bandOf(r.lvl), col = order.indexOf(bb.key), p = pctOf(r)
+    const lo = [0, 25, 75][col], hi = [25, 75, 100][col]
+    const x = col * 200 + 12 + (p - lo) / (hi - lo) * 176
+    return `<line x1="${x}" x2="${x}" y1="${base + 10}" y2="${base + 22}" stroke="${bb.c}" stroke-width="2.5" opacity="${bb.key === b.key ? 1 : .3}"/>`
+  }).join('')
+  $('bandChart').innerHTML = `<svg viewBox="0 0 ${W} ${H + 20}" class="w-full">
+      <defs>${order.map(key => { const x = bandByKey(key)
+        return `<linearGradient id="g-${key}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${x.c}" stop-opacity="${key === b.key ? .85 : .14}"/><stop offset="1" stop-color="${x.c}" stop-opacity="${key === b.key ? .25 : .04}"/></linearGradient>
+          <clipPath id="c-${key}"><rect x="${order.indexOf(key) * 200}" y="0" width="200" height="${H}"/></clipPath>` }).join('')}</defs>
+      ${order.map((key, i) => `<rect x="${i * 200 + 4}" y="6" width="192" height="${base - 6}" rx="16" fill="${key === b.key ? bandByKey(key).soft : '#faf9f8'}"/>`).join('')}
+      ${order.map(key => `<g clip-path="url(#c-${key})"><path d="${d} Z" fill="url(#g-${key})"/><path d="${d}" fill="none" stroke="${bandByKey(key).c}" stroke-width="${key === b.key ? 4 : 2.5}" stroke-opacity="${key === b.key ? 1 : .35}"/></g>`).join('')}
+      <line x1="0" x2="${W}" y1="${base}" y2="${base}" stroke="#dfdedd" stroke-width="2"/>
+      ${ticks}
+      ${order.map((key, i) => `<text x="${i * 200 + 100}" y="40" text-anchor="middle" font-family="Inter,sans-serif" font-size="26" font-weight="900" fill="${bandByKey(key).c}" opacity="${key === b.key ? 1 : .45}">${bc[key]}</text>`).join('')}
+    </svg>
+    <div class="grid grid-cols-3 text-center">${order.map(key => { const x = bandByKey(key)
+      return `<button class="ac-bandcol" data-band="${key}" aria-pressed="${key === b.key}"><b>${x.name}</b><span>${x.range}</span></button>` }).join('')}</div>`
+  $('bandDesc').textContent = b.desc
+  $('bandTopTitle').textContent = b.top
+  $('bandTopTitle').style.color = b.c
+  $('bandTop').innerHTML = inBand.slice(0, 3).map((r, i) => `
+    <button class="ac-toprow" data-res="${r.pkg}|${r.cat}|${r.idx}" style="--c:${b.c};--s:${b.soft}">
+      <span class="ac-pct"><b class="tnum">${pctOf(r)}</b><small>perc.</small></span>
+      <span class="min-w-0 flex-1"><b class="block text-[16px]">${r.name}</b>
+        <span class="mt-1 flex items-center gap-2 text-sm text-[#575757]"><span class="flex h-6 w-7 items-center justify-center rounded-md bg-[#f4f4f4] [&_svg]:h-5 [&_svg]:w-6">${ART[pkgArt(r.pkg)]}</span>${r.label}</span></span>
+      <span class="rank tnum">${i + 1}</span>
+    </button>`).join('') || '<p class="ac-hint">V tomto pásme zatiaľ nemáte žiadny výsledok.</p>'
+  $('bandAll').innerHTML = `Všetkých ${bc[b.key]} výsledkov v pásme ${b.name.toLowerCase()} ${ICON.chev}`
+  $('bandAll').dataset.bandList = b.key
 }
 
 /* ---------- detail výsledku ---------- */
@@ -3376,8 +3545,48 @@ function openIc(id){
   $('icMeta').textContent = `${catCount(id)} výsledkov · ${ACC_CATS[id].length} ${plural(ACC_CATS[id].length,'kategória','kategórie','kategórií')}`
   $('icHero').innerHTML = it.hero.slice(0, 4).map(h => `<li class="flex items-start gap-2"><span class="mt-0.5 text-[#ff4100] [&_svg]:h-4 [&_svg]:w-4">${ICON.check}</span><span>${h}</span></li>`).join('')
   $('icKit').textContent = acc.stage === 'waiting' ? 'po jej doručení do laboratória' : curKit().id
-  $('icTotal').textContent = eur(it.price)
+  acc.icCode = null; acc.icCodeOpen = false; acc.icCodeErr = false
+  renderIc()
   openOverlay($('icModal'))
+}
+
+/* payment block of the quick buy: saved card, or a gift code instead */
+function renderIc(){
+  const it = ALL_ITEMS.get(acc.icId)
+  const code = acc.icCode
+  $('icDyn').innerHTML = `
+    ${code ? `
+      <div class="ac-code ok flex items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#567b24] [&_svg]:h-5 [&_svg]:w-5">${ICON.gift}</span>
+        <span class="min-w-0 flex-1 text-sm"><b class="block">Darčekový kód uplatnený</b><span class="text-[#567b24] tnum">${code} · −${eur(it.price)}</span></span>
+        <button class="ac-link text-sm" data-ic-code-remove>Zrušiť</button>
+      </div>` : `
+      <div class="flex items-center justify-between gap-3 rounded-2xl border border-[#e7e5e4] p-4">
+        <div><p class="text-grey-300 text-xs font-semibold">Platba</p><p class="mt-0.5 text-sm font-semibold">Uložená karta VISA •••• 4242</p></div>
+        <button class="ac-link text-sm">Zmeniť</button>
+      </div>
+      <div class="ac-code mt-2.5">
+        <button class="flex w-full cursor-pointer items-center gap-3 text-left" data-ic-code-toggle aria-expanded="${!!acc.icCodeOpen}">
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#fff1eb] text-[#ff4100] [&_svg]:h-5 [&_svg]:w-5">${ICON.gift}</span>
+          <span class="min-w-0 flex-1"><b class="block text-sm">Máte darčekový kód?</b><span class="ac-hint">Odomknite balíček kódom namiesto platby.</span></span>
+          <span class="text-[#959595] [&_svg]:h-5 [&_svg]:w-5" style="transform:rotate(${acc.icCodeOpen ? 90 : 0}deg);transition:transform .2s">${ICON.chev}</span>
+        </button>
+        ${acc.icCodeOpen ? `
+          <div class="mt-3 flex gap-2">
+            <input id="icCodeInput" class="ac-input" style="height:46px;text-transform:uppercase;letter-spacing:.06em" placeholder="GB-${acc.icId.toUpperCase()}-12345" autocomplete="off">
+            <button class="ac-btn ac-btn-dark ac-btn-sm" style="height:46px" data-ic-code-apply>Uplatniť</button>
+          </div>
+          <p class="ac-hint mt-2" style="${acc.icCodeErr ? 'color:#bf342c' : ''}">${acc.icCodeErr
+            ? 'Kód nie je platný. Skontrolujte ho v e-maile od darcu (formát GB-NÁZOV-12345).'
+            : 'Kód nájdete v e-maile s darčekom. Zadáva ho ten, komu sa má balíček otvoriť.'}</p>` : ''}
+      </div>`}
+    <div class="flex items-baseline justify-between gap-3 px-1 pt-4">
+      <span class="font-semibold">Spolu s DPH</span>
+      <span class="flex items-baseline gap-2">${code ? `<s class="text-[#959595] tnum">${eur(it.price)}</s>` : ''}<b class="text-3xl font-black tnum">${eur(code ? 0 : it.price)}</b></span>
+    </div>`
+  $('icPay').innerHTML = code
+    ? `Odomknúť kódom <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg>`
+    : `Zaplatiť a odomknúť <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg>`
 }
 
 /* ---------- bought in the cart, account has 2+ people: open it for whom? ---------- */
@@ -3437,14 +3646,12 @@ function renderAccount(){
     b.className = 'kits-btn cursor-pointer rounded px-2.5 py-1 text-xs font-bold '
       + (+b.dataset.kits === acc.kitsMode ? 'bg-white text-black' : 'text-neutral-400 hover:text-white')
   })
-  const ring = $('acRing')
-  if (ring && acc.celebrate) requestAnimationFrame(() => requestAnimationFrame(() => { ring.style.strokeDashoffset = ring.dataset.target }))
   acc.celebrate = false
 }
 
 function goStage(s, opts = {}){
   acc.stage = s
-  if (opts.celebrate) acc.celebrate = true
+  if (opts.celebrate || s === 'results') acc.celebrate = true
   renderAccount()
   if (!opts.keepScroll) window.scrollTo({ top:0, behavior:'smooth' })
 }
@@ -3555,10 +3762,25 @@ document.addEventListener('click', e => {
   if (q('[data-back-pdp]')){ backToPdp(); return }
 
   if ((el = q('[data-acc-tab]'))){ acc.tab = el.dataset.accTab; renderAccount(); return }
-  if ((el = q('[data-level]'))){
+  if ((el = q('[data-band-list]'))){
+    const key = el.dataset.bandList
+    if ($('bandModal').hasAttribute('data-open')) closeOverlay($('bandModal'))
     acc.tab = 'levels'; renderAccount()
-    requestAnimationFrame(() => $(`acLevel-${el.dataset.level}`)?.scrollIntoView({ behavior:'smooth', block:'start' }))
+    requestAnimationFrame(() => $(`acBand-${key}`)?.scrollIntoView({ behavior:'smooth', block:'start' }))
     return
+  }
+  if ((el = q('[data-band]'))){
+    if ($('bandModal').hasAttribute('data-open')){ acc.band = el.dataset.band; renderBand() }
+    else openBand(el.dataset.band)
+    return
+  }
+  if (q('[data-ic-code-toggle]')){ acc.icCodeOpen = !acc.icCodeOpen; acc.icCodeErr = false; renderIc(); $('icCodeInput')?.focus(); return }
+  if (q('[data-ic-code-remove]')){ acc.icCode = null; renderIc(); return }
+  if (q('[data-ic-code-apply]')){
+    const v = ($('icCodeInput').value || '').trim().toUpperCase()
+    if (/^GB-[A-Z]+-\d{5}$/.test(v)){ acc.icCode = v; acc.icCodeErr = false; toast('Kód je platný.') }
+    else acc.icCodeErr = true
+    renderIc(); return
   }
   if ((el = q('[data-res-tab]'))){ renderResult(el.dataset.resTab); return }
   if ((el = q('[data-pick]'))){ if (!el.disabled){ acc.pick = +el.dataset.pick; renderActivation() } return }
@@ -3582,6 +3804,18 @@ document.addEventListener('click', e => {
   }
 })
 
+/* donut: the centre follows the hovered band */
+function donutLabel(key){
+  const n = $('acDonutN'), l = $('acDonutL')
+  if (!n) return
+  if (!key){ const box = n.closest('.ac-donut'); n.textContent = box.dataset.total; n.style.color = ''; l.textContent = 'výsledkov'; return }
+  const b = bandByKey(key), bc = bandCounts(curKit())
+  n.textContent = bc[key]; n.style.color = b.c; l.textContent = `${b.name} · ${b.range}`
+}
+document.addEventListener('mouseover', e => { const s = e.target.closest && e.target.closest('.ac-donut .seg'); if (s) donutLabel(s.dataset.band) })
+document.addEventListener('mouseout', e => { const s = e.target.closest && e.target.closest('.ac-donut .seg'); if (s) donutLabel(null) })
+document.addEventListener('keydown', e => { const s = e.target.closest && e.target.closest('.ac-donut .seg'); if (s && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); openBand(s.dataset.band) } })
+
 /* quick buy → unlocked on the spot */
 $('icPay').addEventListener('click', () => {
   const id = acc.icId
@@ -3592,9 +3826,10 @@ $('icPay').addEventListener('click', () => {
     toast(`${pkgName(id)} je zaplatený. Vyhodnotí sa spolu so vzorkou.`)
     renderAccount(); return
   }
+  const viaCode = !!acc.icCode
   unlock(id)
   renderAccount()
-  toast(`Zaplatené — ${pkgName(id)} je odomknutý (+${catCount(id)} výsledkov).`)
+  toast(`${viaCode ? 'Kód uplatnený' : 'Zaplatené'} — ${pkgName(id)} je odomknutý (+${catCount(id)} výsledkov).`)
   revealFresh()
 })
 
